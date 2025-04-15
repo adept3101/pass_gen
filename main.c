@@ -31,6 +31,19 @@ void small_symbol(int size){
     return;
 }
 
+void big_symbol(int size){
+    srand(time(NULL));
+    unsigned char *pass_C = malloc(size * sizeof(unsigned char));
+    for(int i = 0; i < size; i++){
+        pass_C[i] = 65 + rand() % (90 - 65 + 1);
+        printf("%c", pass_C[i]);
+    }
+    free(pass_C);
+    printf("\n");
+
+    return;
+}
+
 int main(){
     srand(time(NULL));
     int n;
@@ -41,5 +54,8 @@ int main(){
     printf("\n");
 
     small_symbol(n);
+    printf("\n");
+
+    big_symbol(n);
     return 0;
 }
