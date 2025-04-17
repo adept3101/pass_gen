@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <stdbool.h>
 
 void num_gen(int size){
     srand(time(NULL));
@@ -47,15 +48,32 @@ void big_symbol(int size){
 int main(){
     srand(time(NULL));
     int n;
+    int choose;
     printf("Введите размер пароля:");
     scanf("%d", &n);
-    printf("n=%d\n", n);
-    num_gen(n);
-    printf("\n");
 
-    small_symbol(n);
-    printf("\n");
+    while(true){
+        printf("1) Генерация пароля из цифр.\n");
+        printf("2) Генерация пароля из букв.\n");
+        printf("3) Генерация пароля из заглавных букв.\n");
+        printf("4) Выход из программы.\n");
+        printf("Выберите действие:\n");
+        scanf("%d", &choose);
+        switch (choose)
+        {
+        case 1:
+            num_gen(n);
+            break;
+        case 2:
+            small_symbol(n);
+            break;
+        case 3:
+            big_symbol(n);
+            break;
+        case 4:
+            return 0;
+        }
+    }
 
-    big_symbol(n);
     return 0;
 }
