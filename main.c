@@ -45,6 +45,19 @@ void big_symbol(int size){
     return;
 }
 
+void all_pass(int size){
+    srand(time(NULL));
+    unsigned char *pass = malloc(size * sizeof(unsigned char));
+    for(int i = 0; i < size; i++){
+        pass[i] = 48 + rand() % (122 - 48 + 1);
+        printf("%c", pass[i]);
+    }
+    free(pass);
+    printf("\n");
+
+    return;
+}
+
 int main(){
     srand(time(NULL));
     int n;
@@ -56,7 +69,8 @@ int main(){
         printf("1) Генерация пароля из цифр.\n");
         printf("2) Генерация пароля из букв.\n");
         printf("3) Генерация пароля из заглавных букв.\n");
-        printf("4) Выход из программы.\n");
+        printf("4) Генерация пароля.\n");
+        printf("5) Выход из программы.\n");
         printf("Выберите действие:\n");
         scanf("%d", &choose);
         switch (choose)
@@ -71,7 +85,10 @@ int main(){
             big_symbol(n);
             break;
         case 4:
-            return 0;
+            all_pass(n);
+            break;
+        case 5:
+            return 0;;
         }
     }
 
